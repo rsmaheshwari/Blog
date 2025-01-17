@@ -1,0 +1,259 @@
+All dependencies
+-----------------
+<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-oauth2-client</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-oauth2-client</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-api</artifactId>
+			<version>0.11.5</version>
+		</dependency>
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-impl</artifactId>
+			<version>0.11.5</version>
+		</dependency>
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-jackson</artifactId>
+			<version>0.11.5</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		
+		
+============================================
+Postman endpoints(Except registering user all operations need "Bearer toke")
+Link - https://blogappassignment.postman.co/workspace/My-Workspace~b4e70b9e-f114-42bb-80ee-ca581c0d6066/collection/26118220-15d55f4b-386d-4c7a-bee6-259524afdc9d?action=share&creator=26118220
+--------------------------------------------
+POST (permit all)
+http://localhost:8888/user/register
+raw json
+{
+  "name": "John Doe",
+  "bio": "Tech enthusiast and blogger",
+  "email": "user4@gmail.com",
+  "password": "12345678",
+  "role": "USER",
+  "authProvider": "LOCAL", 
+  "phoneNumber": "+1234567890"
+}
+----------------------------------------------------
+POST(permit all)
+http://localhost:8888/user/easy-register
+raw json
+{
+    "email":"dg@vdgx2cvd.co",
+    "password":"szd23zcxsdccxcvx"
+}
+----------------------------------------------------
+POST(permit all)
+http://localhost:8888/security/authenticate
+raw json
+{
+    "email":"cc@cc.com",
+    "password":"12345678"
+}
+----------------------------------------------------
+GET(ADMIN)
+http://localhost:8888/user/users
+Bearer Token from above method
+----------------------------------------------------
+PUT(Authenticated)
+http://localhost:8888/user/update
+raw json
+
+{
+    "id": 78,
+    "name": "John Doe",
+    "bio": "Tech enthusiast and blogger cum editor",
+    "email": "user2@gmail.com",
+    "password": "12345678",
+    "role": "USER",
+    "authProvider": "LOCAL",
+    "phoneNumber": "+1234567890"
+}
+
+Bearer Token from above method
+----------------------------------------------------
+DELETE(Authenticated)
+http://localhost:8888/user/delete/85
+Bearer token needed
+----------------------------------------------------
+POST(Authenticated)
+http://localhost:8888/user/update-profile-picture
+form-data
+key - file, value - image(Multipart)
+Bearer Token needed
+----------------------------------------------------
+BLOG CRUD
+----------------------------------------------------
+POST(Authenticated)
+http://localhost:8888/blog/write
+raw json
+
+{
+    "title": "First Blog to test",
+    "content": "Hello there! How are you?",
+    "category": "Blog",
+    "isDraft": "false",
+	"tags": [
+        {
+            "id": 64
+        }
+    ]
+}
++
+Bearer token
+----------------------------------------------------
+GET(Authenticated)
+http://localhost:8888/blog/6
+Bearer token needed
+----------------------------------------------------
+PUT(Authenticated)
+http://localhost:8888/blog/update
+raw json
+{
+    "id": 15,
+    "title": "First Blog to test - edited",
+    "content": "Hello there! How are you?Edit 1",
+    "category": "Blog",
+    "isDraft": "false",
+    "tags": [
+        {
+            "id": 64
+        }
+    ]
+}
+Bearer token needed
+----------------------------------------------------
+GET(Authenticated)
+http://localhost:8888/blog
+http://localhost:8888/blog/
+Bearer token needed
+----------------------------------------------------
+DELETE(Authenticated)
+http://localhost:8888/blog/delete/14
+Bearer token needed
+----------------------------------------------------
+COMMENT CRUD
+----------------------------------------------------
+POST(Authenticated)
+http://localhost:8888/comment/write
+raw json
+{
+    "content": "Commenting my first comment",
+    "blogId": 36,
+    "parentCommentId": null
+}
+Bearer token needed
+----------------------------------------------------
+GET(Authenticated)
+http://localhost:8888/comment/1
+Bearer token needed
+----------------------------------------------------
+GET(Authenticated)
+http://localhost:8888/comment/
+http://localhost:8888/comment
+Bearer token needed
+----------------------------------------------------
+PUT(Authenticated)
+http://localhost:8888/comment/update
+raw json
+{
+    "id":2,
+    "content": "Commenting my first comment edited 2",
+    "blogId": 36
+}
+Bearer token needed
+----------------------------------------------------
+DELETE(Authenticated)
+http://localhost:8888/comment/delete/2
+Bearer token needed
+----------------------------------------------------
+VOTE CRUD
+----------------------------------------------------
+POST(Authenticated)
+http://localhost:8888/vote/add
+
+raw json
+{
+    "voteType": "DOWNVOTE",
+    "commentId": 8
+}
+Bearer token needed
+----------------------------------------------------
+GET(Authenticated)
+http://localhost:8888/vote/3
+Bearer token needed
+----------------------------------------------------
+PUT(Authenticated)
+http://localhost:8888/vote/update
+raw json
+{
+    "id":3,
+    "voteType": "UPVOTE",
+    "commentId": 8
+}
+Bearer token needed
+----------------------------------------------------
+
